@@ -1,0 +1,94 @@
+extends layout
+
+
+block content
+	//h1= 'Page ' + hithere._id
+		
+	//ul
+	//	each page, i in hithere
+		//	li= i + ' is ' + page
+
+	form(name="goback", method="post", action="page1")
+		input(type="hidden", name="1") 
+		button(class="link-button", type="submit") <-- Go back to start
+	Table
+		tr
+			td
+			td
+					if hithere.s1 == null
+						form#addS1(name="adds1",method="post",action="/saveSentence")
+							input#inputS1(type="text", placeholder="Submit a sentence", name="s1")
+							button(type="submit") Submit
+					else
+						if hithere.s1l == null
+							form(name="goforward", method="post", action="makeStory")
+								input(type="hidden", name="s1ms") 
+								button(class="link-button", type="submit") 
+									p= hithere.s1
+						else			
+							form(name="goexisting", method="post", action="hasStory")
+								input(type="hidden", name="s1hs") 
+								button(class="link-button", type="submit") 
+									p= hithere.s1
+							
+			td
+		tr
+			td
+				
+				
+					if hithere.s2 == null
+						form#addS2(name="adds2",method="post",action="/saveSentence")
+							input#inputS2(type="text", placeholder="Click on it to follow that story", name="s2")
+							button#btnSubmit(type="submit") Submit
+					else
+						if hithere.s2l == null
+							form(name="goforward", method="post", action="makeStory")
+								input(type="hidden", name="s2ms") 
+								button(class="link-button", type="submit") 
+									p= hithere.s2
+						else			
+							form(name="goexisting", method="post", action="hasStory")
+								input(type="hidden", name="s2hs") 
+								button(class="link-button", type="submit") 
+									p= hithere.s2
+			td
+					if hithere._id == 1
+						p Once apon a time,
+					else
+						p= hithere.middle
+			td
+					if hithere.s3 == null
+						form#addS3(name="adds3",method="post",action="/saveSentence")
+							input#inputS3(type="text", placeholder="make more story paths!", name="s3")
+							button#btnSubmit(type="submit") Submit
+					else
+						if hithere.s3l == null
+							form(name="goforward", method="post", action="makeStory")
+								input(type="hidden", name="s3ms") 
+								button(class="link-button", type="submit") 
+									p= hithere.s3
+						else			
+							form(name="goexisting", method="post", action="hasStory")
+								input(type="hidden", name="s3hs") 
+								button(class="link-button", type="submit") 
+									p= hithere.s3
+		tr
+			td
+			td
+				
+					if hithere.s4 == null
+						form#addS4(name="adds4",method="post",action="/saveSentence")
+							input#inputS4(type="text", placeholder="Go back to start at any time", name="s4")
+							button#btnSubmit(type="submit") Submit
+					else
+						if hithere.s4l == null
+							form(name="goforward", method="post", action="makeStory")
+								input(type="hidden", name="s4ms") 
+								button(class="link-button", type="submit") 
+									p= hithere.s4
+						else			
+							form(name="goexisting", method="post", action="hasStory")
+								input(type="hidden", name="s4hs") 
+								button(class="link-button", type="submit") 
+									p= hithere.s4
+			td

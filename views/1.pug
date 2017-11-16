@@ -1,0 +1,65 @@
+extends layout
+
+block content
+	h1= 'Page ' + hithere._id
+		
+	ul
+		each page, i in hithere
+			li= i + ' is ' + page
+
+	form(name="goback", method="get", action="1")
+		input(type="hidden", name="1") 
+		button(class="link-button", type="submit") <-- go back fuck
+	Table
+		tr
+			td
+			td
+				#hithere.s1
+					if hithere.s1 == null
+						form#addS1(name="adds1",method="post",action="/1")
+							input#inputS1(type="text", placeholder="111111111", name="s1")
+							button#btnSubmit(type="submit") Submit
+					else
+						if hithere.s1l == null
+							form(name="goforward", method="post", action="1l")
+								input(type="hidden", name="goforward") 
+								button(class="link-button", type="submit") 
+									p= hithere.s1 + " no linked page"
+						else			
+							form(name="goexisting", method="post", action="1le")
+								input(type="hidden", name="goexisting") 
+								button(class="link-button", type="submit") 
+									p= hithere.s1 + " linked page"
+							
+			td
+		tr
+			td
+				
+				
+					if hithere.s2 == null
+						form#addS2(name="adds2",method="post",action="/story-time")
+							input#inputS2(type="text", placeholder="222222222", name="s2")
+							button#btnSubmit(type="submit") Submit
+					else
+						p= hithere.s2
+			td
+				
+			td
+				
+					if hithere.s3 == null
+						form#addS3(name="adds3",method="post",action="/story-time")
+							input#inputS3(type="text", placeholder="33333333", name="s3")
+							button#btnSubmit(type="submit") Submit
+					else
+						p= hithere.s3
+		tr
+			td
+			td
+				
+					if hithere.s4 != null
+						form#addS4(name="adds4",method="post",action="/4" onsubmit="return validateForm()")
+							input#inputS4(type="text", placeholder="4444444", name="s4")
+							button#btnSubmit(type="submit") Submit
+					else
+						p= hithere.s4
+			td
