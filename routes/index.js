@@ -2,21 +2,26 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 module.exports = router;
-var db = req.db;
-var collection = db.get('pages');
-db.pages.drop()
-db.pages.insert({_id:1})
+
 pageId=1
 
 /* render page with current pageId */
 router.get('/story-time', function(req, res) {
 	var db = req.db;
 	var collection = db.get('pages');
-	collection.findOne({ _id: pageId },{},function(e,docs){
-		res.render('story-time', {
-			"hithere" : docs
-		});
-		console.log("page :", pageId, docs)
+	collection.findOne({ _id: 1 },{},function(e,docs){
+		if (docs != null) {
+			collection.findOne({ _id: pageId },{},function(e,docs){
+				res.render('story-time', {
+					"hithere" : docs
+				});
+					
+			});
+		}
+		else {
+			
+		}
+			
 	});
 });
 
