@@ -1,9 +1,8 @@
 extends layout
 
-
 block content
-	//h1= 'Page ' + thispage._id
-		
+	// very helpful when developing
+	//h1= 'Page ' + thispage._id	
 	//ul
 	//	each page, i in thispage
 		//	li= i + ' is ' + page
@@ -16,12 +15,12 @@ block content
 			td
 			td
 					if thispage.top == null
-						form#addtop(name="addtop",method="post",action="/saveSentence")
-							input#inputtop(type="text", placeholder="Submit a sentence", name="top")
+						form(name="addtop", method="post",action="/saveSentence")
+							input#inputtop(type="text", placeholder="", name="top")
 							button(type="submit") Submit
 					else
 						if thispage.topLink == null
-							form(name="goforward", method="post", action="/makePage")
+							form(method="post", action="/makePage")
 								input(type="hidden", name="topMakePage") 
 								button(class="link-button", type="submit") 
 									p= thispage.top
@@ -30,15 +29,12 @@ block content
 								input(type="hidden", name="topHasPage") 
 								button(class="link-button", type="submit") 
 									p= thispage.top
-							
 			td
 		tr
 			td
-				
-				
 					if thispage.left == null
-						form#addleft(name="addleft",method="post",action="/saveSentence")
-							input#inputleft(type="text", placeholder="Click on it to follow that story", name="left")
+						form(name="addleft",method="post",action="/saveSentence")
+							input#inputleft(type="text", placeholder="", name="left")
 							button#btnSubmit(type="submit") Submit
 					else
 						if thispage.leftLink == null
@@ -58,8 +54,8 @@ block content
 						p= thispage.middle
 			td
 					if thispage.right == null
-						form#addright(name="addright",method="post",action="/saveSentence")
-							input#inputright(type="text", placeholder="make more story paths!", name="right")
+						form(name="addright",method="post",action="/saveSentence")
+							input#inputright(type="text", placeholder="", name="right")
 							button#btnSubmit(type="submit") Submit
 					else
 						if thispage.rightLink == null
@@ -77,8 +73,8 @@ block content
 			td
 				
 					if thispage.bot == null
-						form#addbot(name="addbot",method="post",action="/saveSentence")
-							input#inputbot(type="text", placeholder="Go back to start at any time", name="bot")
+						form(name="addbot",method="post",action="/saveSentence")
+							input(type="text", placeholder="", name="bot")
 							button#btnSubmit(type="submit") Submit
 					else
 						if thispage.botLink == null
