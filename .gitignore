@@ -1,2 +1,5 @@
 node_modules/*
 Data/*
+mongo.bat
+mongod.bat
+devstart.bat
