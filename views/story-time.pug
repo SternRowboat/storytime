@@ -2,10 +2,10 @@ extends layout
 
 
 block content
-	//h1= 'Page ' + hithere._id
+	//h1= 'Page ' + thispage._id
 		
 	//ul
-	//	each page, i in hithere
+	//	each page, i in thispage
 		//	li= i + ' is ' + page
 
 	form(name="goback", method="post", action="page1")
@@ -15,80 +15,80 @@ block content
 		tr
 			td
 			td
-					if hithere.s1 == null
-						form#addS1(name="adds1",method="post",action="/saveSentence")
-							input#inputS1(type="text", placeholder="Submit a sentence", name="s1")
+					if thispage.top == null
+						form#addtop(name="addtop",method="post",action="/saveSentence")
+							input#inputtop(type="text", placeholder="Submit a sentence", name="top")
 							button(type="submit") Submit
 					else
-						if hithere.s1l == null
-							form(name="goforward", method="post", action="makeStory")
-								input(type="hidden", name="s1ms") 
+						if thispage.topLink == null
+							form(name="goforward", method="post", action="/makePage")
+								input(type="hidden", name="topMakePage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s1
+									p= thispage.top
 						else			
-							form(name="goexisting", method="post", action="hasStory")
-								input(type="hidden", name="s1hs") 
+							form(name="goexisting", method="post", action="/hasPage")
+								input(type="hidden", name="topHasPage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s1
+									p= thispage.top
 							
 			td
 		tr
 			td
 				
 				
-					if hithere.s2 == null
-						form#addS2(name="adds2",method="post",action="/saveSentence")
-							input#inputS2(type="text", placeholder="Click on it to follow that story", name="s2")
+					if thispage.left == null
+						form#addleft(name="addleft",method="post",action="/saveSentence")
+							input#inputleft(type="text", placeholder="Click on it to follow that story", name="left")
 							button#btnSubmit(type="submit") Submit
 					else
-						if hithere.s2l == null
-							form(name="goforward", method="post", action="makeStory")
-								input(type="hidden", name="s2ms") 
+						if thispage.leftLink == null
+							form(name="goforward", method="post", action="/makePage")
+								input(type="hidden", name="leftMakePage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s2
+									p= thispage.left
 						else			
-							form(name="goexisting", method="post", action="hasStory")
-								input(type="hidden", name="s2hs") 
+							form(name="goexisting", method="post", action="/hasPage")
+								input(type="hidden", name="leftHasPage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s2
+									p= thispage.left
 			td
-					if hithere._id == 1
-						p Once apon a time,
+					if thispage._id == 1
+						p Once upon a time,
 					else
-						p= hithere.middle
+						p= thispage.middle
 			td
-					if hithere.s3 == null
-						form#addS3(name="adds3",method="post",action="/saveSentence")
-							input#inputS3(type="text", placeholder="make more story paths!", name="s3")
+					if thispage.right == null
+						form#addright(name="addright",method="post",action="/saveSentence")
+							input#inputright(type="text", placeholder="make more story paths!", name="right")
 							button#btnSubmit(type="submit") Submit
 					else
-						if hithere.s3l == null
-							form(name="goforward", method="post", action="makeStory")
-								input(type="hidden", name="s3ms") 
+						if thispage.rightLink == null
+							form(name="goforward", method="post", action="/makePage")
+								input(type="hidden", name="rightMakePage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s3
+									p= thispage.right
 						else			
-							form(name="goexisting", method="post", action="hasStory")
-								input(type="hidden", name="s3hs") 
+							form(name="goexisting", method="post", action="/hasPage")
+								input(type="hidden", name="rightHasPage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s3
+									p= thispage.right
 		tr
 			td
 			td
 				
-					if hithere.s4 == null
-						form#addS4(name="adds4",method="post",action="/saveSentence")
-							input#inputS4(type="text", placeholder="Go back to start at any time", name="s4")
+					if thispage.bot == null
+						form#addbot(name="addbot",method="post",action="/saveSentence")
+							input#inputbot(type="text", placeholder="Go back to start at any time", name="bot")
 							button#btnSubmit(type="submit") Submit
 					else
-						if hithere.s4l == null
-							form(name="goforward", method="post", action="makeStory")
-								input(type="hidden", name="s4ms") 
+						if thispage.botLink == null
+							form(name="goforward", method="post", action="makePage")
+								input(type="hidden", name="botMakePage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s4
+									p= thispage.bot
 						else			
-							form(name="goexisting", method="post", action="hasStory")
-								input(type="hidden", name="s4hs") 
+							form(name="goexisting", method="post", action="hasPage")
+								input(type="hidden", name="botHasPage") 
 								button(class="link-button", type="submit") 
-									p= hithere.s4
+									p= thispage.bot
 			td
