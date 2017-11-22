@@ -22,8 +22,11 @@ $npm install
 Once finished run:  
 $npm start
 
-Then open http://localhost:4564/story-time  
+Then open   
+http://localhost:4564/story-time  
 or the shortcut Make_a_story
+
+Write some stories!
 
 
 # Extras
