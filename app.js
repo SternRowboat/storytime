@@ -9,7 +9,9 @@ var index = require('./index');
 
 var app = express();
 var collection = db.get('pages');
+// Delete this line to stop database reset
 collection.drop()
+
 collection.insert({_id:1});
 
 // view engine setup
