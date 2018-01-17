@@ -34,7 +34,7 @@ Write some stories!
 
 # Extras
 
-The app currently resets the database on startup. To remove this functionality delete line 16 & 17 in app.js
+The app currently resets the database on startup. To remove this functionality delete line 13 in app.js
 
 Things to add:  
 Readout of the current story.  
