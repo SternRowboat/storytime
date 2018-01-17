@@ -1,8 +1,8 @@
 # Storytime
-A web app where you can create a multi path story.  
-From each sentence you can create 4 other possible sentences.  
-Click on any sentence to use that as the next one, then create up to 4 more!  
-You can go back to the start of the story at any time, to read through existing sentences or create new ones.
+A web app where you can create an infinitely branching story tree.  
+Once you have submited a sentence, you may click on that sentence to continue that branch of the story and write up to 4 new sentences.
+There are no limits to the depth of the stories.
+You can go back to the start of the story at any time, to read through existing storylines or create new ones.
 
 # Install
 
@@ -36,5 +36,8 @@ The app currently resets the database on startup. To remove this functionality d
 Things to add:  
 Readout of the current story.  
 Branching tree of written sentences.  
-Manual database reset.  
+Manual database reset.
+Edit Sentences.
+Make it pretty
 Multi user support?  
+use sessions not mongo?
