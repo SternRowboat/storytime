@@ -10,8 +10,8 @@ You can go back to the start of the story at any time, to read through existing 
 # Install
 
 Required modules:  
--mongo  
--node  
+-mongodb  
+-nodejs  
 -npm  
 
 Please make sure you have recent versions of the above installed.
