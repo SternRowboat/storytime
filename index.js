@@ -35,19 +35,19 @@ router.post('/makePage', function(req, res) {
 		else {
 			newPageId = pageTotal + 1;
 			var nextPageLink = Object.keys(req.body);
-			console.log(nextPageLink + "s to " + newPageId);
 			req.collection.update({"_id": pageId }, {$set: {[nextPageLink] : newPageId}});
-			console.log(nextPageLink);
-			var sentencePosition = nextPageLink[0].toString().substring(0, - 4);
-			console.log(sentencePosition);
+			var sentencePosition = ("" + nextPageLink).slice(0,-4);
+
+			console.log("\n" + sentencePosition + " sentence on " + pageId + " links to " + " page " + newPageId);
+
 			req.collection.findOne({"_id": pageId }, {[sentencePosition] :1}, function(e,midDoc){
 				if (e){
 				res.send("ERROR: Couldn't find the " + sentencePosition + " for pageid " + pageId);
 				}
 				else {
-					var middle = Object.keys(midDoc);
-					console.log("middle of page ", newPageId, "is", middle);
-					req.collection.insert({"_id": newPageId, "middle": middle});
+					var middle = Object.values(midDoc);
+					console.log("middle of page ", newPageId, "is", middle[1]);
+					req.collection.insert({"_id": newPageId, "middle": middle[1]});
 					pageId = newPageId;
 					res.redirect("story-time");
 				}
