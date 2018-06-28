@@ -1,5 +1,5 @@
 node_modules/*
-Data/*
+data/*
 mongo.bat
 mongod.bat
 devstart.bat
