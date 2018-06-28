@@ -38,7 +38,7 @@ router.post('/makePage', function(req, res) {
 			req.collection.update({"_id": pageId }, {$set: {[nextPageLink] : newPageId}});
 			var sentencePosition = ("" + nextPageLink).slice(0,-4);
 
-			console.log("\n" + sentencePosition + " sentence on " + pageId + " links to " + " page " + newPageId);
+			console.log("\nClicked on " + sentencePosition + " sentence on page " + pageId + " which links to the current page: " + newPageId);
 
 			req.collection.findOne({"_id": pageId }, {[sentencePosition] :1}, function(e,midDoc){
 				if (e){
@@ -46,7 +46,7 @@ router.post('/makePage', function(req, res) {
 				}
 				else {
 					var middle = Object.values(midDoc);
-					console.log("middle of page ", newPageId, "is", middle[1]);
+					console.log(" Middle of page ", newPageId, "is", middle[1]);
 					req.collection.insert({"_id": newPageId, "middle": middle[1]});
 					pageId = newPageId;
 					res.redirect("story-time");
@@ -81,7 +81,7 @@ router.post('/saveSentence', function(req, res) {
 	// find which sentence is being submitted
 	var sentenceText = Object.values(req.body);
 	var sentencePosition = Object.keys(req.body);
-	console.log("Created Sentence on page " + pageId + "\n At position: " + sentencePosition + "\n Saying: " + sentenceText);
+	console.log("\nCreated Sentence on page " + pageId + "\n At position: " + sentencePosition + "\n Saying: " + sentenceText);
 	// if Field not empty update
 	if (sentenceText != null && sentenceText != "" ){
 		req.collection.update({"_id": pageId }, {$set: {[sentencePosition] : sentenceText}});
