@@ -21,7 +21,7 @@ block content
 					else
 						if thispage.topLink == null
 							form(method="post", action="/makePage")
-								input(type="hidden", name="topMakePage") 
+								input(type="hidden", name="topLink") 
 								button(class="link-button", type="submit") 
 									p= thispage.top
 						else			
@@ -39,7 +39,7 @@ block content
 					else
 						if thispage.leftLink == null
 							form(name="goforward", method="post", action="/makePage")
-								input(type="hidden", name="leftMakePage") 
+								input(type="hidden", name="leftLink") 
 								button(class="link-button", type="submit") 
 									p= thispage.left
 						else			
@@ -60,12 +60,12 @@ block content
 					else
 						if thispage.rightLink == null
 							form(name="goforward", method="post", action="/makePage")
-								input(type="hidden", name="rightMakePage") 
+								input(type="hidden", name="rightLink") 
 								button(class="link-button", type="submit") 
 									p= thispage.right
 						else			
 							form(name="goexisting", method="post", action="/hasPage")
-								input(type="hidden", name="rightHasPage") 
+								input(type="hidden", name="botLink") 
 								button(class="link-button", type="submit") 
 									p= thispage.right
 		tr
@@ -79,7 +79,7 @@ block content
 					else
 						if thispage.botLink == null
 							form(name="goforward", method="post", action="makePage")
-								input(type="hidden", name="botMakePage") 
+								input(type="hidden", name="botLink") 
 								button(class="link-button", type="submit") 
 									p= thispage.bot
 						else			

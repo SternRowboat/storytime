@@ -34,17 +34,18 @@ router.post('/makePage', function(req, res) {
 		}
 		else {
 			newPageId = pageTotal + 1;
-			var nextPageLink = req.body.topMakePage != null ? 'topLink' : req.body.leftMakePage != null ? 'leftLink' : req.body.rightMakePage != null ? 'rightLink' : req.body.botMakePage != null ? 'botLink' : 'Something went wrong with makePage nextPageLink.\n';
+			var nextPageLink = Object.keys(req.body);
 			console.log(nextPageLink + "s to " + newPageId);
 			req.collection.update({"_id": pageId }, {$set: {[nextPageLink] : newPageId}});
-			
-			var sentencePosition = req.body.topMakePage != null ? 'top' : req.body.leftMakePage != null ? 'left' : req.body.rightMakePage != null ? 'right' : req.body.botMakePage != null ? 'bot' : 'Something went wrong with makePage sentencePosition\n';
+			console.log(nextPageLink);
+			var sentencePosition = nextPageLink[0].toString().substring(0, - 4);
+			console.log(sentencePosition);
 			req.collection.findOne({"_id": pageId }, {[sentencePosition] :1}, function(e,midDoc){
 				if (e){
 				res.send("ERROR: Couldn't find the " + sentencePosition + " for pageid " + pageId);
 				}
 				else {
-					var middle = midDoc.top != null ? midDoc.top : midDoc.left != null ? midDoc.left : midDoc.right != null ? midDoc.right : midDoc.bot != null ? midDoc.bot : "Couldn't find the middle sentence";
+					var middle = Object.keys(midDoc);
 					console.log("middle of page ", newPageId, "is", middle);
 					req.collection.insert({"_id": newPageId, "middle": middle});
 					pageId = newPageId;
@@ -78,8 +79,8 @@ router.post('/hasPage', function(req, res) {
 
 router.post('/saveSentence', function(req, res) {
 	// find which sentence is being submitted
-	var sentenceText = req.body.top != null ? req.body.top : req.body.left != null ? req.body.left : req.body.right != null ? req.body.right : req.body.bot != null ? req.body.bot : 'ERROR Something went wrong with saveSentence - sentenceText.';
-	var sentencePosition = req.body.top != null ? 'top' : req.body.left != null ? 'left' : req.body.right != null ? 'right' : req.body.bot != null ? 'bot' : 'ERROR: Something went wrong with saveSentence - sentencePosition.';
+	var sentenceText = Object.values(req.body);
+	var sentencePosition = Object.keys(req.body);
 	console.log("Created Sentence on page " + pageId + "\n At position: " + sentencePosition + "\n Saying: " + sentenceText);
 	// if Field not empty update
 	if (sentenceText != null && sentenceText != "" ){
