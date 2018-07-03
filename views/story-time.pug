@@ -20,7 +20,7 @@ block content
 							button(type="submit") Submit
 					else
 						if thispage.topLink == null
-							form(method="post", action="/makePage")
+							form(name="goforward", method="post", action="/makePage")
 								input(type="hidden", name="topLink") 
 								button(class="link-button", type="submit") 
 									p= thispage.top
@@ -65,7 +65,7 @@ block content
 									p= thispage.right
 						else			
 							form(name="goexisting", method="post", action="/hasPage")
-								input(type="hidden", name="rightLink") 
+								input(type="hidden", name="rightHasPage") 
 								button(class="link-button", type="submit") 
 									p= thispage.right
 		tr
