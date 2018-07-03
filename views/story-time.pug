@@ -17,7 +17,7 @@ block content
 					if thispage.top == null
 						form(name="addtop", method="post",action="/saveSentence")
 							input#inputtop(type="text", placeholder="", name="top")
-							button(type="submit") Submit
+							button#btnSubmit(type="submit") Submit
 					else
 						if thispage.topLink == null
 							form(name="goforward", method="post", action="/makePage")
@@ -74,7 +74,7 @@ block content
 				
 					if thispage.bot == null
 						form(name="addbot",method="post",action="/saveSentence")
-							input(type="text", placeholder="", name="bot")
+							input#inputbot(type="text", placeholder="", name="bot")
 							button#btnSubmit(type="submit") Submit
 					else
 						if thispage.botLink == null
